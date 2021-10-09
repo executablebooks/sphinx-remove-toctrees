@@ -9,7 +9,6 @@ from sphinx.testing.util import SphinxTestApp
 path_test_doc = Path(__file__).parent / "site"
 
 
-
 def test_build_html(make_app, tmp_path):
     """Test building the base html template and config."""
     copytree(path_test_doc, tmp_path / "test_doc")

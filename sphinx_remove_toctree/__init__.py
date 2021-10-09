@@ -32,6 +32,6 @@ def remove_toctrees(app, doctree, docname):
 
 
 def setup(app):
-    app.add_config_value("remove_toctrees_from", "", "html")
+    app.add_config_value("remove_toctrees_from", [], "html")
     app.connect("doctree-resolved", remove_toctrees)
     return {"parallel_read_safe": True, "parallel_write_safe": True}
