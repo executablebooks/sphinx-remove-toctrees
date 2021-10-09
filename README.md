@@ -6,7 +6,13 @@ generates **a lot** of stub pages
 
 This extension can be used to remove the sidebar links for just the pages you specify, speed up the build considerably.
 
-## Installation
+## Who is this for?
+
+This package is for maintainers that use Sphinx and have really large API documentation (or for some other reason, have a ton of nested pages).
+If you use a Sphinx theme that contains the entire Table of Contents on every page (e.g., any theme that has "collapsable" sidebar sections), this will slow things down considerably.
+Use this theme to speed up your builds.
+
+## Install
 
 Install the extension via `pip`:
 
@@ -20,7 +26,7 @@ and activate it by adding it to your Sphinx `conf.py` file:
 extensions = ["sphinx_remove_toctree"]
 ```
 
-## Usage
+## Use
 
 In `conf.py`, provide a list of `glob`-like paths **relative to your documentation root**. Each entry should match to pages that should be removed from the sidebar.
 
