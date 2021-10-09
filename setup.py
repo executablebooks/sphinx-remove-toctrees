@@ -43,8 +43,6 @@ setup(
     extras_require={
         "code_style": ["pre-commit==2.12.1"],
         "docs": docs_requirements,
-        "tests": docs_requirements + [
-            "pytest",
-        ]
+        "tests": docs_requirements + ["pytest",],
     },
 )

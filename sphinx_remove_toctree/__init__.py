@@ -25,7 +25,9 @@ def remove_toctrees(app, doctree, docname):
         for match in srcdir.glob(pagename):
             match = str(match.relative_to(srcdir).with_suffix(""))
             if match not in app.env.tocs:
-                logger.warning(f"Found match to remove toctree, but it is not in app.env.tocs: {match}")
+                logger.warning(
+                    f"Found match to remove toctree, but it is not in app.env.tocs: {match}"
+                )
                 continue
             for toctree in app.env.tocs[match].traverse(addnodes.toctree):
                 toctree.parent.remove(toctree)
