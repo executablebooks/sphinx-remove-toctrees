@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
 
-  docs:
+  tests:
 
     runs-on: ubuntu-latest
     strategy:
@@ -29,7 +29,7 @@ jobs:
   publish:
 
     name: Publish to PyPi
-    needs: [pre-commit, docs]
+    needs: [tests]
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     runs-on: ubuntu-latest
     steps:
