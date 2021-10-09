@@ -1,0 +1,2 @@
+graft docs/
+prune docs/_build
