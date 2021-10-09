@@ -6,6 +6,8 @@ from bs4 import BeautifulSoup
 from sphinx.testing.path import path as sphinx_path
 from sphinx.testing.util import SphinxTestApp
 
+pytest_plugins = 'sphinx.testing.fixtures'
+
 path_test_doc = Path(__file__).parent / "site"
 
 
