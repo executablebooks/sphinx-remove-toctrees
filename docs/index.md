@@ -1,6 +1,7 @@
-# Sphinx Remove Toctrees
+```{include} ../README.md
+```
 
 ```{toctree}
+:hidden:
 second/second_page
-second/second_hidden_children
 ```

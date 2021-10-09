@@ -24,4 +24,4 @@ def test_build_html(make_app, tmp_path):
     # Grab all references to second-level links, we should *only* find the shown page
     second_level_links = sidenav.select(".toctree-l2 a")
     assert len(second_level_links) == 1
-    assert second_level_links[0].attrs["href"] == "second/nested/nested_page_shown.html"
+    assert second_level_links[0].attrs["href"] == "nested/nested_page_shown.html"
