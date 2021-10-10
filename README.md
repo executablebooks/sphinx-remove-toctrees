@@ -1,8 +1,10 @@
 # Remove toctrees from Sphinx pages
 
+![pypi](https://img.shields.io/pypi/v/sphinx-remove-toctrees)
+
 Improve your Sphinx build time by selectively removing TocTree objects from pages.
 This is useful if your documentation uses auto-generated API documentation, which
-generates **a lot** of stub pages
+generates **a lot** of stub pages.
 
 This extension can be used to remove the sidebar links for just the pages you specify, speed up the build considerably.
 
