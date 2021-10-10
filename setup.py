@@ -7,7 +7,7 @@ with open("./README.md") as ff:
     readme_text = ff.read()
 
 # Parse version
-init = Path(__file__).parent.joinpath("sphinx_remove_toctree", "__init__.py")
+init = Path(__file__).parent.joinpath("sphinx_remove_toctrees", "__init__.py")
 for line in init.read_text().split("\n"):
     if line.startswith("__version__ ="):
         break
@@ -20,13 +20,13 @@ docs_requirements = [
 ]
 
 setup(
-    name="sphinx-remove-toctree",
+    name="sphinx-remove-toctrees",
     version=version,
     description="Reduce your documentation build size by selectively removing toctrees from pages.",
     long_description=readme_text,
     long_description_content_type="text/markdown",
     author="Executable Book Project",
-    url="https://github.com/executablebooks/sphinx-remove-toctree",
+    url="https://github.com/executablebooks/sphinx-remove-toctrees",
     license="MIT License",
     packages=find_packages(),
     classifiers=[

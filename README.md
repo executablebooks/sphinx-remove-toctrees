@@ -23,7 +23,7 @@ $ pip install sphinx-remove-toctrees
 activate it by adding it to your Sphinx extensions in `conf.py`:
 
 ```python
-extensions.append("sphinx_remove_toctree")
+extensions.append("sphinx_remove_toctrees")
 ```
 
 ## Use
