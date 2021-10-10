@@ -42,10 +42,9 @@ jobs:
       - name: Build package
         run: |
           pip install wheel
-          git submodule update --init
           python setup.py sdist bdist_wheel
       - name: Publish
         uses: pypa/gh-action-pypi-publish@v1.4.2
         with:
           user: __token__
-          password: ${{ secrets.PYPI_KEY }}
+          password: ${{ secrets.PYPI_API_TOKEN }}

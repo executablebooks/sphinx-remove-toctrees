@@ -17,18 +17,20 @@ Use this theme to speed up your builds.
 Install the extension via `pip`:
 
 ```console
-$ pip install git+https://github.com/executablebooks/sphinx-remove-toctree
+$ pip install sphinx-remove-toctrees
 ```
 
-and activate it by adding it to your Sphinx `conf.py` file:
+activate it by adding it to your Sphinx extensions in `conf.py`:
 
 ```python
-extensions = ["sphinx_remove_toctree"]
+extensions.append("sphinx_remove_toctree")
 ```
 
 ## Use
 
-In `conf.py`, provide a list of `glob`-like paths **relative to your documentation root**. Each entry should match to pages that should be removed from the sidebar.
+In `conf.py`, there is a top-level configuration key called `remove_toctrees_from` that allows you to specify the pages to remove from your sidebar.
+Provide a list of `glob`-like paths **relative to your documentation root**.
+Each entry should match to pages that should be removed from the sidebar.
 
 For example, the following configuration will remove all pages from the folder `api/generated`, and the specific page `subfolder/page_two.rst`:
 
