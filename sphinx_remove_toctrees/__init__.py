@@ -1,6 +1,5 @@
 """A small sphinx extension to add "copy" buttons to code blocks."""
 from pathlib import Path
-from glob import glob
 from sphinx.util import logging
 from sphinx import addnodes
 
@@ -19,7 +18,7 @@ def remove_toctrees(app, env):
     patterns = app.config.remove_toctrees_from
     if isinstance(patterns, str):
         patterns = [patterns]
-    
+
     # Figure out the list of patterns to remove from all toctrees
     to_remove = []
     for pattern in patterns:
@@ -39,7 +38,7 @@ def remove_toctrees(app, env):
             if len(new_entries) == 0:
                 toctree.parent.remove(toctree)
             else:
-                toctree.attributes['entries'] = new_entries
+                toctree.attributes["entries"] = new_entries
 
 
 def setup(app):
