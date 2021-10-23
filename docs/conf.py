@@ -91,7 +91,7 @@ html_title = "Sphinx Remove Toctrees"
 # html_sidebars = {}
 
 # CopyButton configuration
-remove_toctrees_from = ["second/nested_hidden/*"]
+remove_from_toctrees = ["second/nested_hidden/*"]
 
 
 # -- Options for HTMLHelp output ---------------------------------------------
