@@ -15,7 +15,12 @@ def remove_toctrees(app, env):
     This happens at the end of the build process, so even though the toctrees
     are removed, it won't raise sphinx warnings about un-referenced pages.
     """
-    patterns = app.config.remove_toctrees_from
+    if len(app.config.remove_toctrees_from) > 0:
+        app.config.remove_from_toctrees = app.config.remove_toctrees_from
+        logger.warning(
+            "`remove_toctrees_from` is deprecated, use `remove_from_toctrees`"
+        )
+    patterns = app.config.remove_from_toctrees
     if isinstance(patterns, str):
         patterns = [patterns]
 
@@ -43,5 +48,6 @@ def remove_toctrees(app, env):
 
 def setup(app):
     app.add_config_value("remove_toctrees_from", [], "html")
+    app.add_config_value("remove_from_toctrees", [], "html")
     app.connect("env-updated", remove_toctrees)
     return {"parallel_read_safe": True, "parallel_write_safe": True}
