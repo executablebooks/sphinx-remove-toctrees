@@ -30,14 +30,14 @@ extensions.append("sphinx_remove_toctrees")
 
 ## Use
 
-In `conf.py`, there is a top-level configuration key called `remove_toctrees_from` that allows you to specify the pages to remove from your sidebar.
+In `conf.py`, there is a top-level configuration key called `remove_from_toctrees` that allows you to specify the pages to remove from your sidebar.
 Provide a list of `glob`-like paths **relative to your documentation root**.
 Each entry should match to pages that should be removed from the sidebar.
 
 For example, the following configuration will remove all pages from the folder `api/generated`, and the specific page `subfolder/page_two.rst`:
 
 ```python
-remove_toctrees_from = ["api/generated/*", "subfolder/page_two.rst"]
+remove_from_toctrees = ["api/generated/*", "subfolder/page_two.rst"]
 ```
 
 This is particularly useful in combination with the `autosummary` directive, which tends to generate a ton of stub-pages that slows things down.
@@ -53,7 +53,7 @@ This will generate stub-pages in a `myfolder/api_gen/` folder.
 To remove each of these pages from your sidebar, you would configure this extension like so:
 
 ```python
-remove_toctrees_from = ["myfolder/api_gen/*"]
+remove_from_toctrees = ["myfolder/api_gen/*"]
 ```
 
 

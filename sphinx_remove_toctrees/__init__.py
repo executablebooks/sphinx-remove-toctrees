@@ -20,7 +20,7 @@ def remove_toctrees(app, env):
         logger.warning(
             "`remove_toctrees_from` is deprecated, use `remove_from_toctrees`"
         )
-    patterns = app.config.remove_toctrees_from
+    patterns = app.config.remove_from_toctrees
     if isinstance(patterns, str):
         patterns = [patterns]
 
