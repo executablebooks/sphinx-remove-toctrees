@@ -1,4 +1,5 @@
-"""A small sphinx extension to add "copy" buttons to code blocks."""
+"""A small sphinx extension to remove toctrees."""
+
 from pathlib import Path
 from sphinx.util import logging
 from sphinx import addnodes
@@ -30,7 +31,9 @@ def remove_toctrees(app, env):
         # Inputs should either be a glob pattern or a direct path so just use glob
         srcdir = Path(env.srcdir)
         for matched in srcdir.glob(pattern):
-            to_remove.append(str(matched.relative_to(srcdir).with_suffix("")))
+            to_remove.append(
+                str(matched.relative_to(srcdir).with_suffix("").as_posix())
+            )
 
     # Loop through all tocs and remove the ones that match our pattern
     for _, tocs in env.tocs.items():
@@ -46,7 +49,7 @@ def remove_toctrees(app, env):
                 toctree.attributes["entries"] = new_entries
 
 
-def setup(app):
+def setup(app):  # noqa: D103
     app.add_config_value("remove_toctrees_from", [], "html")
     app.add_config_value("remove_from_toctrees", [], "html")
     app.connect("env-updated", remove_toctrees)
