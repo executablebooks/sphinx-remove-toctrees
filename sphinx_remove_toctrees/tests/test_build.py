@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from shutil import copytree
 
+import sphinx
 from bs4 import BeautifulSoup
 from sphinx.testing.path import path as sphinx_path
 from sphinx.testing.util import SphinxTestApp
@@ -13,8 +14,11 @@ path_test_doc = Path(__file__).parent / "site"
 
 def test_build_html(make_app, tmp_path):
     """Test building the base html template and config."""
-    copytree(path_test_doc, tmp_path / "test_doc")
-    app = make_app(srcdir=sphinx_path(tmp_path / "test_doc"))
+    srcdir = tmp_path / "test_doc"
+    copytree(path_test_doc, srcdir)
+    if sphinx.version_info < (7, 2):
+        srcdir = sphinx_path(srcdir)
+    app = make_app(srcdir=srcdir)
     app.build()
     index = tmp_path / "test_doc" / "_build" / "html" / "index.html"
     assert index.exists()
