@@ -5,7 +5,7 @@ from sphinx.util import logging
 from sphinx import addnodes
 
 
-__version__ = "1.0.0"
+__version__ = "1.0.0.post1"
 
 logger = logging.getLogger(__name__)
 
