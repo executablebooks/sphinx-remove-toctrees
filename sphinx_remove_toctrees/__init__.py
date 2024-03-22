@@ -10,6 +10,12 @@ __version__ = "0.0.3"
 logger = logging.getLogger(__name__)
 
 
+def findall(node):
+    # findall replaces traverse in docutils v0.18
+    # note a difference is that findall is an iterator
+    return getattr(node, "findall", node.traverse)
+
+
 def remove_toctrees(app, env):
     """Remove toctrees from pages a user provides.
 
@@ -37,7 +43,7 @@ def remove_toctrees(app, env):
 
     # Loop through all tocs and remove the ones that match our pattern
     for _, tocs in env.tocs.items():
-        for toctree in tocs.traverse(addnodes.toctree):
+        for toctree in findall(tocs)(addnodes.toctree):
             new_entries = []
             for entry in toctree.attributes.get("entries", []):
                 if entry[1] not in to_remove:

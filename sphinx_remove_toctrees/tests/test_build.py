@@ -3,8 +3,7 @@ from pathlib import Path
 from shutil import copytree
 
 from bs4 import BeautifulSoup
-from sphinx.testing.path import path as sphinx_path
-from sphinx.testing.util import SphinxTestApp
+from sphinx import version_info as sphinx_version_info
 
 pytest_plugins = "sphinx.testing.fixtures"
 
@@ -13,8 +12,19 @@ path_test_doc = Path(__file__).parent / "site"
 
 def test_build_html(make_app, tmp_path):
     """Test building the base html template and config."""
-    copytree(path_test_doc, tmp_path / "test_doc")
-    app = make_app(srcdir=sphinx_path(tmp_path / "test_doc"))
+    src_dir = tmp_path / "test_doc"
+    copytree(path_test_doc, src_dir)    
+
+    # For compatibility with multiple versions of sphinx, convert pathlib.Path to
+    # sphinx.testing.path.path here.
+    if sphinx_version_info >= (7, 2):
+        app_src_dir = src_dir
+    else:
+        from sphinx.testing.path import path
+
+        app_src_dir = path(os.fspath(src_dir))
+
+    app = make_app(srcdir=app_src_dir)
     app.build()
     index = tmp_path / "test_doc" / "_build" / "html" / "index.html"
     assert index.exists()
